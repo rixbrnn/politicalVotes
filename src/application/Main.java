@@ -1,7 +1,10 @@
-package laboratorio6;
+package application;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import util.Election;
+import util.IU.ElectionIU;
 
 public class Main {
 	public static void main(String[]args) {
@@ -21,11 +24,12 @@ public class Main {
 			
 			try {
 				option = Integer.parseInt(sc.nextLine());
+				if(option<1 || option>6)
+					throw new InputMismatchException();
 			}catch(InputMismatchException | NumberFormatException e2) {
 				System.out.println("INVALID OPTION!");
 				System.out.println("Select a valid option");
 				System.out.println("---------------------");
-				sc.nextLine();
 			}
 			
 			if(option==1)

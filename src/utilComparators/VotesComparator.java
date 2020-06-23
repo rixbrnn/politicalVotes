@@ -1,6 +1,8 @@
-package laboratorio6;
+package utilComparators;
 
 import java.util.Comparator;
+
+import util.Candidate;
 
 public class VotesComparator implements Comparator<Candidate> {
 

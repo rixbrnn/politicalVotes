@@ -1,7 +1,10 @@
-package laboratorio6;
+package util.IU;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import util.Candidate;
+import util.Election;
 
 public class ElectionIU {
 	
@@ -28,16 +31,16 @@ public class ElectionIU {
 		}
 		
 		System.out.println("Type it the age");
-		int age = Integer.parseInt(sc.nextLine().replaceAll("\\D",""));
+		int age = -1;
 		boolean validAge = false;
 		while(!validAge) {
 			try {
+				age = Integer.parseInt(sc.nextLine().replaceAll("\\D",""));
 				if(18>age || age>110)
 					throw new InputMismatchException();
 				validAge = true;
-			}catch(InputMismatchException e) {
+			}catch(InputMismatchException | NumberFormatException e) {
 				System.out.println("Type it a valid age!");
-				age = Integer.parseInt(sc.nextLine().replaceAll("\\D",""));
 			}
 		}
 		System.out.println("Type it the political party");
@@ -143,6 +146,8 @@ public class ElectionIU {
 			noCandidates();
 		}else {
 			StringBuilder sb = new StringBuilder();
+			sb.append("\nELECTION STATS:");
+			sb.append(String.format("\n%-20s | %2s | %9s | %5s","Name","Age","Pol.Party","Votes"));
 			sb.append("\nYoungest:       ");
 			sb.append(election.whoIsYounger());
 			sb.append("\nOldest:         ");
@@ -153,11 +158,12 @@ public class ElectionIU {
 			sb.append(election.lessVoted());
 			sb.append("\nTotal votes:    ");
 			sb.append(election.totalVotes());
-			sb.append("\nPercent Stats \n");
+			sb.append("\n-------------");
+			sb.append("\nPercent Stats\n");
 			for(Candidate i : election.getCandidates()) {
 				sb.append(i.getName());
 				sb.append("=> ");
-				sb.append(election.averageVoteByCandidate(i));
+				sb.append(String.format("%.2f",election.averageVoteByCandidate(i)));
 				sb.append("%\n");
 			}
 			System.out.println(sb.toString());

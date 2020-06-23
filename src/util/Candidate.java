@@ -1,4 +1,4 @@
-package laboratorio6;
+package util;
 
 public class Candidate {
 
@@ -15,11 +15,6 @@ public class Candidate {
 		this.votes = votes;
 	}
 	
-	@Override
-	public String toString() {
-		return "Candidate [name=" + name + ", age=" + age + ", politicalParty=" + politicalParty + ", votes=" + votes
-				+ "]";
-	}
 	public String getName() {
 		return name;
 	}
@@ -43,6 +38,10 @@ public class Candidate {
 	}
 	public void setVotes(int votes) {
 		this.votes = votes;
+	}
+	@Override
+	public String toString() {
+		return "[ " + name + " | " + age + " | " + politicalParty + " | " + votes+ "]";
 	}
 	
 

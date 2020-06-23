@@ -1,7 +1,12 @@
-package laboratorio6;
+package util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import utilComparators.AgeComparator;
+import utilComparators.NameComparator;
+import utilComparators.PoliticalPartyComparator;
+import utilComparators.VotesComparator;
 
 public class Election {
 	
